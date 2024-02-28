@@ -1,8 +1,13 @@
 const express=require('express');
 const router=express.Router();
+const HomeController = require('../Controllers/HomeController')
 
-router.get('/HelloThanh',(req,res)=>{
-    res.send('<h1>Hello Thanh</h1>')
-})
+// router.get('/',HomeController.getHomepage);
+router.get('/',(req,res)=>{
+    res.send('Hello');
+});
+
+router.get('/User2',HomeController.getUser1);
+
 
 module.exports = router;
