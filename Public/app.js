@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 //connect database
-const connection = require('../Config/database');
+const {connection,executeQuery} = require('../Config/database');
 
 // get & use webRouter;
 const webRouter = require('../Router/web');
@@ -12,6 +12,7 @@ const webRouter = require('../Router/web');
 // config viewEngine;
 const ViewEngine = require('../Config/viewEngine');
 ViewEngine(app,express);
+
 
 //get port;
 const port = process.env.PORT || 5000;

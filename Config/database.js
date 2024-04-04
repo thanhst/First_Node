@@ -10,4 +10,24 @@ const connection = mysql.createPool({
     queueLimit:0,
     connectTimeout:1000,
 });
-module.exports = connection;
+const executeQuery = (sql, values) => {
+    return new Promise((resolve, reject) => {
+        connection.getConnection((err, connect) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            connect.query(sql, values, (queryErr, results, fields) => {
+                connect.release(); // Giải phóng kết nối trở lại pool sau khi sử dụng
+
+                if (queryErr) {
+                    reject(queryErr);
+                } else {
+                    resolve({ results, fields });
+                }
+            });
+        });
+    });
+};
+module.exports = {connection,executeQuery};
