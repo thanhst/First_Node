@@ -1,26 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello Thanh!</title>
 </head>
 <style>
-    html{
-        height:100%;
-        width:100%;
+    html {
+        height: 100%;
+        width: 100%;
     }
-    body{
-        height:100%;
+
+    body {
+        height: 100%;
+        width: 100%;
+        margin-left: 150px;
+        margin-top: 100px;
+    }
+
+    .img_main>img {
+        width: 200px;
+        height: 250px;
+        border: 10px solid gray;
+        border-radius: 10px;
+    }
+
+    .context_main {
+        background-color: rgb(228, 228, 228);
+        padding: 30px;
+        height: 350px;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .button_image {
+        width: 140px;
+        height: 50px;
+        border: 0;
+        background-color: #0d6efd;
+        border-radius: 10px;
+        color: white;
+        margin-top:50px;
+        margin-right:20px;
+        font-size: 16px;
+    }
+    .button_image:hover {
+        border: 2px gray solid;
+        font-style: italic;
+        color: black
+    }
+    .submit{
         width:100%;
-        margin-left:350px;
-        margin-top:120px;
+        display: flex;
+        justify-content: end;
+        align-items: end;
+    }
+    @keyframes reverse {
+        0% {
+          transform: rotateY(0deg) ;
+        }
+        10% {
+          transform: rotateY(180deg) ;
+        }
+        20%{
+            transform: rotateY(0deg) ;
+        }
+        30%{
+            transform: rotateY(180deg) ;
+        }
+        40%{
+            transform: rotateY(0deg) ;
+        }
+        50%{
+            transform: rotateY(180deg);
+        }
+        60%{
+            transform: rotate(0deg) ;
+        }
+        70%{
+            transform: rotate(360deg) ;
+        }
+        80%{
+            transform: rotate(720deg) ;
+        }
+        90%{
+            transform: rotate(1080deg) ;
+        }
+        100% {
+          transform: rotate(1440deg);
+       }
+      }
+    .animation {
+        animation: ease-in-out 5s infinite alternate;
+        animation-name: reverse;
+        height: 300px !important;
+        width:300px !important;
+        margin:30px;
+        border-radius: 1000px !important;
     }
 </style>
+
 <body>
-    <h1 style="font-weight:bold;">Xin chào mọi người!</h1> 
-    <h3>Đây là trang web test framework Node.js của mình! Mình là Lê Quang Thanh , lớp 63HTTT1 trường ĐHTL.<br></h3>
-    <h3>Cái này chưa có css nên xấu lắm :v</h3>
-    <a style="text-decoration: none; font-size:larger;font-style: oblique;" href="http://thanhxk2003.id.vn/User"><p>Hãy bấm vào đây để chuyển hướng trang tạo tài khoản nha!</p></a>
-</body>
+    <div style="display:flex;justify-content:space-between;width:80%;align-items: start;height:inherit">
+        <div class="img_main">
+            <img src="/image/main.jpg" class="" id="img">
+        </div>
+        <div class="context_main">
+            <h1 style="font-weight:bold;margin-top:0">Xin chào mọi người!</h1>
+            <h3>Đây là trang web test framework Node.js của mình! Mình là Lê Quang Thanh , lớp 63HTTT1 trường ĐHTL.<br>
+            </h3>
+            <h3>Cái này chưa có css nên xấu lắm :v</h3>
+            <a style="text-decoration: none; font-size:larger;font-style: oblique;"
+                href="http://thanhxk2003.id.vn/User">
+                <p>Hãy bấm vào đây để chuyển hướng trang tạo tài khoản nha!</p>
+            </a>
+            <div class="submit">
+                <button class="button_image" id="disco">Click me!</button>
+                <button class="button_image" id="stop" hidden>Stop !</button>
+            </div>
+        </div>
+    </div>
+    <audio id="hehe" controls hidden>
+        <source src="/mp3/GreatestBattleMusicOfAllTimesLuffyMoukouExtendedVersion-VA-5743565.mp3" type="audio/mpeg">
+    </audio></body>
+<script>
+    const buttonActive = document.getElementById('disco')
+    const buttonStop = document.getElementById('stop')
+    const image = document.getElementById('img')
+    const audio = document.getElementById('hehe');
+    buttonActive.addEventListener('click',function(){
+        image.classList.add('animation')
+        buttonActive.hidden=true
+        buttonStop.hidden=false
+        audio.play();
+    })
+    buttonStop.addEventListener('click',function(){
+        image.classList.remove('animation')
+        buttonActive.hidden=false
+        buttonStop.hidden=true
+        audio.pause();
+        audio.currentTime = 0;
+    })
+</script>
 </html>
